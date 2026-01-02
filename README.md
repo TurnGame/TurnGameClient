@@ -22,7 +22,7 @@
   <img src="https://img.shields.io/badge/Mr.Cheon-304CB2?style=for-the-badge&logo=Mr.Cheon&logoColor=white" />&nbsp
   
   <h3 align="center">👑 Modelling Leader & BackGround Modeller👑 </h3>
-  <img src="https://img.shields.io/badge/Mr.Lee-304CB2?style=for-the-badge&logo=Mr.Lee&logoColor=white" />&nbsp
+  <img src="https://img.shields.io/badge/Marco-304CB2?style=for-the-badge&logo=Marco&logoColor=white" />&nbsp
 
   <h3 align="center">🖍️ Character Modeller 🖍️</h3>
   <img src="https://img.shields.io/badge/Bread02-304CB2?style=for-the-badge&logo=Bread02&logoColor=white" />&nbsp
@@ -76,10 +76,10 @@
 
   <br><br>
   
-  <!-- Mr.Lee Connection -->
-  <img src="https://img.shields.io/badge/Mr.Lee-304CB2?style=for-the-badge&logo=kjdhr&logoColor=white"/>
+  <!-- Marco Connection -->
+  <img src="https://img.shields.io/badge/Marco-304CB2?style=for-the-badge&logo=kjdhr&logoColor=white"/>
   <br>
-    <a href="mailto:aaaa@naver.com?subject=Connection%20To%20Mr.Lee&body=Conatacting%20To%Mr.Lee"/>
+    <a href="mailto:409.marco@gmail.com?subject=Connection%20To%20Marco&body=Conatacting%20To%Marco"/>
     <img src="https://img.shields.io/badge/Gmail-D14836?style=for-the-badge&logo=gmail&logoColor=white"/>
   </a>
 
@@ -88,7 +88,7 @@
   <!-- Mr.Cheon Connection -->
   <img src="https://img.shields.io/badge/Mr.Cheon-304CB2?style=for-the-badge&logo=kjdhr&logoColor=white"/>
   <br>
-    <a href="mailto:aaaa@naver.com?subject=Connection%20To%20Mr.Cheon&body=Conatacting%20To%Mr.Cheon"/>
+    <a href="mailto:taesu10188@gmail.com?subject=Connection%20To%20Mr.Cheon&body=Conatacting%20To%Mr.Cheon"/>
     <img src="https://img.shields.io/badge/Gmail-D14836?style=for-the-badge&logo=gmail&logoColor=white"/>
   </a>
 
@@ -97,7 +97,7 @@
   <!-- Mr.Oh Connection -->
   <img src="https://img.shields.io/badge/Mr.Oh-304CB2?style=for-the-badge&logo=kjdhr&logoColor=white"/>
   <br>
-    <a href="mailto:aaaa@naver.com?subject=Connection%20To%20Mr.Oh&body=Conatacting%20To%Mr.Oh"/>
+    <a href="mailto:dragonregad@gmail.com?subject=Connection%20To%20Mr.Oh&body=Conatacting%20To%Mr.Oh"/>
     <img src="https://img.shields.io/badge/Gmail-D14836?style=for-the-badge&logo=gmail&logoColor=white"/>
   </a>
   
