@@ -9,7 +9,7 @@
 <div align="center">
   <h2 align="center">🧑‍⚖️ Members 🧑‍⚖️</h2>
 
-  <h3 align="center">👑 Team Leader & Developer 👑</h3>
+  <h3 align="center">👑 Code Leader & Developer 👑</h3>
   <img src="https://img.shields.io/badge/Coder94-304CB2?style=for-the-badge&logo=Coder_94&logoColor=white" />&nbsp
 
   <h3 align="center">📠 Developer 📠</h3>
@@ -21,7 +21,7 @@
   <h3 align="center">📠 Developer 📠</h3>
   <img src="https://img.shields.io/badge/Mr.Cheon-304CB2?style=for-the-badge&logo=Mr.Cheon&logoColor=white" />&nbsp
   
-  <h3 align="center">👑 Leader & BackGround Modeller👑 </h3>
+  <h3 align="center">👑 Modelling Leader & BackGround Modeller👑 </h3>
   <img src="https://img.shields.io/badge/Mr.Lee-304CB2?style=for-the-badge&logo=Mr.Lee&logoColor=white" />&nbsp
 
   <h3 align="center">🖍️ Character Modeller 🖍️</h3>
