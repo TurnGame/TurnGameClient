@@ -13,22 +13,22 @@
   <img src="https://img.shields.io/badge/Coder94-304CB2?style=for-the-badge&logo=Coder_94&logoColor=white" />&nbsp
 
   <h3 align="center">📠 Developer 📠</h3>
-  <img src="https://img.shields.io/badge/Coder94-304CB2?style=for-the-badge&logo=Song_Bareum&logoColor=white" />&nbsp
+  <img src="https://img.shields.io/badge/Song_Bareum-304CB2?style=for-the-badge&logo=Song_Bareum&logoColor=white" />&nbsp
 
   <h3 align="center">📠 Developer 📠</h3>
-  <img src="https://img.shields.io/badge/Coder94-304CB2?style=for-the-badge&logo=kjdhr&logoColor=white" />&nbsp
+  <img src="https://img.shields.io/badge/kjdhr-304CB2?style=for-the-badge&logo=kjdhr&logoColor=white" />&nbsp
 
   <h3 align="center">📠 Developer 📠</h3>
-  <img src="https://img.shields.io/badge/Coder94-304CB2?style=for-the-badge&logo=Mr.Cheon&logoColor=white" />&nbsp
+  <img src="https://img.shields.io/badge/Mr.Cheon-304CB2?style=for-the-badge&logo=Mr.Cheon&logoColor=white" />&nbsp
   
   <h3 align="center">👑 Leader & BackGround Modeller👑 </h3>
-  <img src="https://img.shields.io/badge/Bread02-304CB2?style=for-the-badge&logo=Mr.Lee&logoColor=white" />&nbsp
+  <img src="https://img.shields.io/badge/Mr.Lee-304CB2?style=for-the-badge&logo=Mr.Lee&logoColor=white" />&nbsp
 
   <h3 align="center">🖍️ Character Modeller 🖍️</h3>
   <img src="https://img.shields.io/badge/Bread02-304CB2?style=for-the-badge&logo=Bread02&logoColor=white" />&nbsp
 
   <h3 align="center">🖍️ BackGround Modeller 🖍️</h3>
-  <img src="https://img.shields.io/badge/Bread02-304CB2?style=for-the-badge&logo=Mr.Oh&logoColor=white" />&nbsp
+  <img src="https://img.shields.io/badge/Mr.Oh-304CB2?style=for-the-badge&logo=Mr.Oh&logoColor=white" />&nbsp
    
 </div>
 
