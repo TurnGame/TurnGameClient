@@ -11,10 +11,13 @@ namespace Data
     [Serializable]
     public class Stat
     {
-        public int level;
-        public int maxHp;
-        public int attack;
-        public int totalEXP;
+        public int unitNum;
+        public float hp;
+        public float mana;
+        public float inteliigence;
+        public float attack;
+        public float defend;
+        public float speed;
     }
 
     //스탯불러오기=================================================================================
@@ -27,7 +30,7 @@ namespace Data
         {
             Dictionary<int, Stat> dict = new Dictionary<int, Stat>();
             foreach (Stat stat in stats)
-                dict.Add(stat.level, stat);
+                dict.Add(stat.unitNum, stat);
 
             return dict;
         }

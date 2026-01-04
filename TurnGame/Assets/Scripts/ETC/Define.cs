@@ -11,6 +11,13 @@ public class Define
         Monster,
     }
 
+    public enum UnitNum
+    {
+        Player = 0,
+        Unit = 1,
+        Enemy = 10
+    }
+
     public enum State
     {
         Die,
@@ -19,7 +26,7 @@ public class Define
         Skill,
     }
 
-public enum Layer
+    public enum Layer
     {
         Ground = 6,
         Block = 7,
