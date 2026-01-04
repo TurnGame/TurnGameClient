@@ -25,7 +25,8 @@ public enum Layer
         Block = 7,
         Monster = 8
     }
-    public enum MouseEvent
+
+    public enum InputEvent
     {
         Press,
         PointerDown,
@@ -39,6 +40,7 @@ public enum Layer
         Effect,
         MaxCount
     }
+
     public enum CameraMode
     {
         QuarterView
