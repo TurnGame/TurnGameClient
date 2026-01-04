@@ -922,13 +922,13 @@ PlayerSettings:
   qnxGraphicConfPath: 
   apiCompatibilityLevel: 6
   captureStartupLogs: {}
-  activeInputHandler: 2
+  activeInputHandler: 1
   windowsGamepadBackendHint: 0
-  cloudProjectId: 
+  cloudProjectId: 46b2f7c1-c844-45ff-a72f-01c75aff73e3
   framebufferDepthMemorylessMode: 0
   qualitySettingsNames: []
-  projectName: 
-  organizationId: 
+  projectName: TurnGame
+  organizationId: rulb
   cloudEnabled: 0
   legacyClampBlendShapeWeights: 0
   hmiLoadingImage: {fileID: 0}
