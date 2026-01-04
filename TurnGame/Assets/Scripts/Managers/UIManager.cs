@@ -25,12 +25,12 @@ public class UIManager
         canvas.renderMode = RenderMode.ScreenSpaceOverlay;
         canvas.overrideSorting = true;
 
-        if (sort) //ÆË¾÷UI
+        if (sort)
         {
             canvas.sortingOrder = (_order);
             _order++;
         }
-        else //±×¿Ü
+        else
         {
             canvas.sortingOrder = 0;
         }
