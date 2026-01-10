@@ -14,6 +14,8 @@ namespace Data
         public int unitNum;
         public float hp;
         public float mana;
+        public float critical;
+        public float criticalDmg;
         public float inteliigence;
         public float attack;
         public float defend;

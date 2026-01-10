@@ -11,6 +11,10 @@ public class Define
         Monster,
     }
 
+    public enum ScenePhase
+    {
+
+    }
     public enum UnitNum
     {
         Player = 0,

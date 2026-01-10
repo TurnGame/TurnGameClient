@@ -9,6 +9,8 @@ public class Stat : MonoBehaviour
     public float            Hp { get; protected set; }
     public float            CurrentHp { get; protected set; }
     public float            Mana { get; protected set; }
+    public float            Critical { get; protected set; }
+    public float            CriticalDmg { get; protected set; }
     public float            CurrentMana { get; protected set; }
     public float            Inteliigence { get; protected set; }
     public float            Attack { get; protected set; }
