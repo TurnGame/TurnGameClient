@@ -21,4 +21,10 @@ public class UI_EventHandler : MonoBehaviour, IDragHandler, IPointerClickHandler
             OnDragHandler.Invoke(eventData);
     }
 
+    private void OnDisable()
+    {
+        OnClickHandler = null;
+        OnDragHandler = null;
+    }
+
 }

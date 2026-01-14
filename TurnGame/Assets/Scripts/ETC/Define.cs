@@ -13,8 +13,24 @@ public class Define
 
     public enum ScenePhase
     {
-
+        StartPhase,
+        BattlePhase,
+        EndPhase,
+        RewardPhase
     }
+
+    public enum Language
+    {
+        Korean,
+        English
+    }
+
+    public enum GameState
+    {
+        Play,
+        Pause
+    }
+
     public enum UnitNum
     {
         Player = 0,
@@ -22,12 +38,10 @@ public class Define
         Enemy = 10
     }
 
-    public enum State
+    public enum PlayerState
     {
-        Die,
-        Moving,
         Idle,
-        Skill,
+
     }
 
     public enum Layer
@@ -48,7 +62,7 @@ public class Define
     public enum Sound
     {
         Bgm,
-        Effect,
+        SE,
         MaxCount
     }
 
@@ -60,9 +74,8 @@ public class Define
     public enum Scene
     {
         Unknown,
-        Login,
-        Lobby,
-        Test
+        Title,
+        Stage1
     }
 
     public enum UIEvent

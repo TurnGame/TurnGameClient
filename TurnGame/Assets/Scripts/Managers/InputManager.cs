@@ -13,14 +13,14 @@ public class InputManager
     float _pressedTime = 0;
     public void OnUpdate()
     {
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            KeyDownAction?.Invoke(KeyCode.Escape);
+            Managers.Game.ChangeGameState(Define.GameState.Pause);
+        }
+
         if (KeyDownAction != null || KeyUpAction != null)
         {
-            if (Input.GetKey(KeyCode.Escape))
-            {
-                KeyDownAction.Invoke(KeyCode.Escape);
-                //게임종료 작업
-            }
-
             CheckKey(KeyCode.W);
             CheckKey(KeyCode.A);
             CheckKey(KeyCode.S);

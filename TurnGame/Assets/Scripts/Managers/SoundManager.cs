@@ -1,10 +1,13 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Audio;
+using UnityEngine.Rendering;
 
 public class SoundManager
 {
-    AudioSource[] _audioSources = new AudioSource[(int)Define.Sound.MaxCount];
+    public AudioSource[] AudioSources { get; private set; } = new AudioSource[(int)Define.Sound.MaxCount];
+
     Dictionary<string, AudioClip> _audioClips = new Dictionary<string, AudioClip>();
 
     public void Init()
@@ -16,29 +19,23 @@ public class SoundManager
             Object.DontDestroyOnLoad(root);
 
             string[] soundNames = System.Enum.GetNames(typeof(Define.Sound));
+
             for(int i = 0; i<soundNames.Length-1; i++)
             {
                 GameObject go = new GameObject { name = soundNames[i] };
-                _audioSources[i] = go.AddComponent<AudioSource>();
+                AudioSources[i] = go.AddComponent<AudioSource>();
 
-                //강의 내에 없는 추가코드
-                //코드에서 직접적으로 3d사운드효과 수정(강의상에선 수정안됨)
-                /*
-                _audioSources[i].spatialBlend = 1.0f;
-                _audioSources[i].minDistance = 1.0f;
-                _audioSources[i].maxDistance = 20.0f;
-                _audioSources[i].rolloffMode = AudioRolloffMode.Linear;
-                */
                 go.transform.parent = root.transform;
+                    
             }
-
-            _audioSources[(int)Define.Sound.Bgm].loop = true;
+            LoadVolumeSetting();
+            AudioSources[(int)Define.Sound.Bgm].loop = true;
         }
     }
 
     public void Clear()
     {
-        foreach(AudioSource audioSource in _audioSources)
+        foreach(AudioSource audioSource in AudioSources)
         {
             audioSource.clip = null;
             audioSource.Stop();
@@ -46,20 +43,20 @@ public class SoundManager
         _audioClips.Clear();
     }
 
-    public void Play(string path, Define.Sound type = Define.Sound.Effect,float pitch = 1.0f)
+    public void Play(string path, Define.Sound type = Define.Sound.SE,float pitch = 1.0f)
     {
         AudioClip audioClip = GetOrAddAudioClip(path, type);
         
         Play(audioClip, type, pitch);
     }
 
-    public void Play(AudioClip audioClip, Define.Sound type = Define.Sound.Effect, float pitch = 1.0f)
+    public void Play(AudioClip audioClip, Define.Sound type = Define.Sound.SE, float pitch = 1.0f)
     {
 
         if (type == Define.Sound.Bgm)
         {
 
-            AudioSource audioSource = _audioSources[(int)Define.Sound.Bgm];
+            AudioSource audioSource = AudioSources[(int)Define.Sound.Bgm];
 
             if (audioSource.isPlaying == true)
                 audioSource.Stop();
@@ -70,14 +67,14 @@ public class SoundManager
         }
         else
         {
-            AudioSource audioSource = _audioSources[(int)Define.Sound.Effect];
+            AudioSource audioSource = AudioSources[(int)Define.Sound.SE];
             audioSource.pitch = pitch;
             audioSource.PlayOneShot(audioClip);
 
         }
     }
 
-    AudioClip GetOrAddAudioClip(string path, Define.Sound type = Define.Sound.Effect)
+    AudioClip GetOrAddAudioClip(string path, Define.Sound type = Define.Sound.SE)
     {
         if (path.Contains("Sounds/") == false)
             path = $"Sounds/{path}";
@@ -104,5 +101,22 @@ public class SoundManager
 
         return audioClip;
 
+    }
+
+    public void SetVolume(float volumeValue, Define.Sound volume)
+    {
+        AudioSources[(int)volume].volume = volumeValue;
+    }
+
+    public void SaveVolumeSetting()
+    {
+        PlayerPrefs.SetFloat(Define.Sound.Bgm.ToString(), AudioSources[(int)Define.Sound.Bgm].volume);
+        PlayerPrefs.SetFloat(Define.Sound.SE.ToString(), AudioSources[(int)Define.Sound.SE].volume);
+    }
+
+    public void LoadVolumeSetting()
+    {
+        AudioSources[(int)Define.Sound.Bgm].volume = PlayerPrefs.GetFloat(Define.Sound.Bgm.ToString(), 1.0f);
+        AudioSources[(int)Define.Sound.SE].volume = PlayerPrefs.GetFloat(Define.Sound.SE.ToString(), 1.0f);
     }
 }

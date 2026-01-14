@@ -1,13 +1,35 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class UIManager
 {
-    int _order = 10;
+    public Action<Define.Language>  OnLanguageChanged = null;
 
-    Stack<UIPopUp> _popUpStack = new Stack<UIPopUp>();
-    UIScene _sceneUI = null;
+    int                             _order = 10;
+    Stack<UIPopUp>                  _popUpStack = new Stack<UIPopUp>();
+    UIScene                         _sceneUI = null;
+
+    public Define.Language Language { private set; get; } = Define.Language.Korean;
+
+    public void Init()
+    {
+        GetLanguage();
+    }
+
+    void GetLanguage()
+    {
+        string languageSetting = PlayerPrefs.GetString("Language", Define.Language.Korean.ToString());
+        Language = (Define.Language)Enum.Parse(typeof(Define.Language), languageSetting);
+    }
+
+    public void SetLanguage(Define.Language lang)
+    {
+        Language = lang;
+        OnLanguageChanged?.Invoke(lang);
+        PlayerPrefs.SetString("Language", lang.ToString());
+    }
 
     public GameObject Root
     {
@@ -19,6 +41,7 @@ public class UIManager
             return root;
         }
     }
+
     public void SetCanvas(GameObject go, bool sort = true)
     {
         Canvas canvas = Util.GetOrAddComponent<Canvas>(go);
@@ -127,6 +150,7 @@ public class UIManager
     public void Clear()
     {
         ClosePopUpUIAll();
+        OnLanguageChanged = null;
         _sceneUI = null;
     }
 }

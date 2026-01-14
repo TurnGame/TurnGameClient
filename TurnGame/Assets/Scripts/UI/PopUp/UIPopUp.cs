@@ -4,11 +4,23 @@ using UnityEngine;
 
 public class UIPopUp : UIBase
 {
+    enum Panel { BG }
 
-    //Start에 직접적으로 넣는것보단 Init함수를 일일이 만드는게 더 좋은 방법.
     public override void Init()
     {
+        base.Init();
         Managers.UI.SetCanvas(gameObject, true);
+
+        Bind<GameObject>(typeof(Panel));
+        GameObject bg = GetObject((int)Panel.BG);
+        BindEvent(bg, (data) => BgClick(), Define.UIEvent.Click);
+    }
+
+    void BgClick()
+    {
+        BtnSound();
+        ClosePopUpUI();
+        Managers.Game.ChangeGameState(Define.GameState.Play);
     }
 
     public virtual void ClosePopUpUI()

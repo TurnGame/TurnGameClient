@@ -65,10 +65,13 @@ public class Managers : MonoBehaviour
             _Instance._data.Init();
             _Instance._pool.Init();
             _Instance._sound.Init();
+            _Instance._ui.Init();
         }
         
     }
 
+    //null체커 =================================================================================
+    public static bool HasInstance { get { return _Instance != null; } }
 
     //초기화 함수 =================================================================================
     public static void Clear()
