@@ -132,7 +132,7 @@ public class GameEndPopUp : UIPopUp
         {
             case Define.Language.Korean:
                 {
-                    titleText.text = "일시정지";
+                    titleText.text = "설정";
                     returnText.text = "타이틀로";
                     gameEndText.text = "게임종료";
                     closeText.text = "창 닫기";
@@ -144,7 +144,7 @@ public class GameEndPopUp : UIPopUp
 
             case Define.Language.English:
                 {
-                    titleText.text = "Paused";
+                    titleText.text = "Settings";
                     returnText.text = "Return title";
                     gameEndText.text = "End game";
                     closeText.text = "Close Tap";

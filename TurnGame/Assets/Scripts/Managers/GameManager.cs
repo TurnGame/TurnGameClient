@@ -8,10 +8,12 @@ public class GameManager
     //변수 =====================================================================================
     #region variables
     public Define.GameState     GameState { private set; get; } = Define.GameState.Play;
-    GameObject _player;
-    HashSet<GameObject> _monsters = new HashSet<GameObject>();
+    GameObject                  _player;
+    HashSet<GameObject>         _monsters = new HashSet<GameObject>();
+    HashSet<GameObject>         _units = new HashSet<GameObject>();
 
-    public Action<int> OnSpawnEvent;
+    public Action<int> MobSpawnEvent;
+    public Action<int> UnitSpawnEvent;
     #endregion
 
     //외부 접근 함수 =====================================================================================
@@ -44,6 +46,10 @@ public class GameManager
     }
     #endregion
 
+    //스폰 함수들 =====================================================================================
+    #region spawn
+
+    //스폰
     public GameObject Spawn(Define.WorldObject type, string path, Transform parent = null)
     {
         GameObject go = Managers.Resource.Instantiate(path, parent);
@@ -52,7 +58,11 @@ public class GameManager
         {
             case Define.WorldObject.Monster:
                 _monsters.Add(go);
-                OnSpawnEvent?.Invoke(1);
+                MobSpawnEvent?.Invoke(1);
+                break;
+            case Define.WorldObject.Unit:
+                _units.Add(go);
+                UnitSpawnEvent?.Invoke(1);
                 break;
             case Define.WorldObject.Player:
                 _player = go;
@@ -62,17 +72,17 @@ public class GameManager
         return go;
     }
 
-    /*
+    //오브젝트 확인
     public Define.WorldObject GetWorldObjectType(GameObject go)
     {
-        BaseController bc = go.GetComponent<BaseController>();
-        if (bc == null)
+        TypeChecker type = go.GetComponent<TypeChecker>();
+        if (type == null)
             return Define.WorldObject.Unknown;
 
-        return bc.WorldObjectType;
+        return type.worldObjectType;
     }
     
-
+    //디스폰
     public void Despawn(GameObject go)
     {
         Define.WorldObject type = GetWorldObjectType(go);
@@ -84,8 +94,18 @@ public class GameManager
                     if (_monsters.Contains(go))
                     {
                         _monsters.Remove(go);
-                        if (OnSpawnEvent != null)
-                            OnSpawnEvent.Invoke(-1);
+                        if (MobSpawnEvent != null)
+                            MobSpawnEvent.Invoke(-1);
+                    }
+                }
+                break;
+            case Define.WorldObject.Unit:
+                {
+                    if (_units.Contains(go))
+                    {
+                        _units.Remove(go);
+                        if (UnitSpawnEvent != null)
+                            UnitSpawnEvent.Invoke(-1);
                     }
                 }
                 break;
@@ -99,5 +119,5 @@ public class GameManager
 
         Managers.Resource.Destroy(go);
     }
-    */
+    #endregion
 }
