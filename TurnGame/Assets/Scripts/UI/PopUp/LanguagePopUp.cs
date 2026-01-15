@@ -63,7 +63,7 @@ public class LanguagePopUp : UIPopUp
         TMP_Text titleTxT = GetText((int)Texts.Title);
         TMP_Text popBtnTxT = GetText((int)Texts.PopBtnTxT);
 
-        switch (Managers.UI.Language)
+        switch (lang)
         {
             case Define.Language.Korean:
                 titleTxT.text = "언어설정";

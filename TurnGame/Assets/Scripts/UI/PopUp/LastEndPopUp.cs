@@ -63,7 +63,7 @@ public class LastEndPopUp : UIPopUp
         TMP_Text yesTxT = GetText((int)Texts.YesTxT);
         TMP_Text noTxT = GetText((int)Texts.NoTxT);
 
-        switch (Managers.UI.Language)
+        switch (lang)
         {
             case Define.Language.Korean:
                 titleTxT.text = "정말 게임을 종료 하시겠습니까?";

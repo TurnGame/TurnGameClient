@@ -128,7 +128,7 @@ public class GameEndPopUp : UIPopUp
         TMP_Text seTxT = GetText((int)Texts.SETxT);
         TMP_Text languageTxT = GetText((int)Texts.LanguageTxT);
 
-        switch (Managers.UI.Language)
+        switch (lang)
         {
             case Define.Language.Korean:
                 {

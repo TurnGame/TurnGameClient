@@ -12,6 +12,6 @@ public class Stage1Scene : BaseScene
 
     public override void Clear()
     {
-        throw new System.NotImplementedException();
+
     }
 }

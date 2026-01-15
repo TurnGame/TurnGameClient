@@ -20,6 +20,7 @@ public class UIBase : MonoBehaviour
     {
         Init();
     }
+
     protected virtual void OnDisable()
     {
         if (Managers.HasInstance)
