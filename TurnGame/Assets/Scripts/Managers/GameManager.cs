@@ -22,6 +22,27 @@ public class GameManager
     public GameObject TestGetPlayer() { return GameObject.FindGameObjectWithTag("Player"); }
     #endregion
 
+    //전체화면(기본화질 1920*1080) =====================================================================================
+    #region screen
+    public void SetScreenMode(Define.ScreenRatio ratio)
+    {
+        switch (ratio)
+        {
+            case Define.ScreenRatio.FullScreen:
+                Screen.SetResolution(Screen.currentResolution.width, Screen.currentResolution.height, FullScreenMode.FullScreenWindow);
+                break;
+            case Define.ScreenRatio.Hd:
+                Screen.SetResolution((int)Define.ScreenRatio.HdWidth, (int)Define.ScreenRatio.HdHeight, FullScreenMode.Windowed);
+                break;
+            case Define.ScreenRatio.Fhd:
+                Screen.SetResolution((int)Define.ScreenRatio.FHDWidth, (int)Define.ScreenRatio.HdHeight, FullScreenMode.Windowed);
+                break;
+            default:
+                break;
+        }
+    }
+    #endregion
+
     //일시정지, 해제 =====================================================================================
     #region pause
     public void ChangeGameState(Define.GameState changingState)

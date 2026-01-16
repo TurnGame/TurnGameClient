@@ -12,6 +12,17 @@ public class Define
         Monster,
     }
 
+    public enum ScreenRatio
+    {
+        FullScreen = 0,
+        Hd = 1,
+        Fhd = 2,
+        HdWidth = 1280,
+        HdHeight = 720,
+        FHDWidth = 1920,
+        FHDHeight = 1080
+    }
+
     public enum ScenePhase
     {
         StartPhase,
