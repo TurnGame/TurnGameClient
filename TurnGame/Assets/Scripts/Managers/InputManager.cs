@@ -13,7 +13,7 @@ public class InputManager
     float _pressedTime = 0;
     public void OnUpdate()
     {
-        if (Input.GetKeyDown(KeyCode.Escape))
+        if (Input.GetKeyDown(KeyCode.Escape) && Managers.Scene.CurrentScene.SceneType != Define.Scene.Title)
         {
             KeyDownAction?.Invoke(KeyCode.Escape);
             Managers.Game.ChangeGameState(Define.GameState.Pause);

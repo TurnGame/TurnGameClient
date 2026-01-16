@@ -48,7 +48,7 @@ public class TitleUI : UIScene
     void OpenSetting()
     {
         BtnSound();
-        Managers.UI.ShowPopUpUI<GameEndPopUp>();
+        Managers.UI.ShowPopUpUI<TitlePopUp>();
     }
 
     void EndGame()

@@ -2,26 +2,22 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class GameEndPopUp : UIPopUp
+public class TitlePopUp : UIPopUp
 {
     //열거형 & 변수 =====================================================================================
     #region enum & variables
     enum Texts
-    { 
+    {
         Title,
         CloseTapText,
-        ReturnText,
-        EndText,
         BgmTxT,
         SETxT,
         LanguageTxT
     }
-    
+
     enum Buttons
     {
-        ReturnBtn,
         CloseTapBtn,
-        EndBtn,
         LanguageBtn
     }
 
@@ -31,17 +27,17 @@ public class GameEndPopUp : UIPopUp
         SESlider
     }
 
-    Slider  _bgmSlider;
-    Slider  _seSlider;
+    Slider _bgmSlider;
+    Slider _seSlider;
 
     #endregion
 
     //유니티 함수 =====================================================================================
     #region unity func
-    protected override void OnDisable() 
-    { 
+    protected override void OnDisable()
+    {
         base.OnDisable();
-        if(Managers.HasInstance) Managers.Sound.SaveVolumeSetting(); 
+        if (Managers.HasInstance) Managers.Sound.SaveVolumeSetting();
     }
     #endregion
 
@@ -50,7 +46,6 @@ public class GameEndPopUp : UIPopUp
     public override void Init()
     {
         base.Init();
-        BtnSound();
         Bind<TMP_Text>(typeof(Texts));
         Bind<Button>(typeof(Buttons));
         Bind<Slider>(typeof(Sliders));
@@ -73,9 +68,7 @@ public class GameEndPopUp : UIPopUp
         });
 
         //버튼 이벤트 바인딩
-        GetButton((int)Buttons.ReturnBtn).onClick.AddListener(ReturnTitle);
         GetButton((int)Buttons.CloseTapBtn).onClick.AddListener(CloseThisPopUp);
-        GetButton((int)Buttons.EndBtn).onClick.AddListener(QuitGame);
         GetButton((int)Buttons.LanguageBtn).onClick.AddListener(LanguagePopUp);
 
         Transtlator(Managers.UI.Language);
@@ -89,22 +82,7 @@ public class GameEndPopUp : UIPopUp
     void CloseThisPopUp()
     {
         BtnSound();
-        Managers.Game.ChangeGameState(Define.GameState.Play);
         ClosePopUpUI();
-    }
-
-    //게임종료
-    void QuitGame()
-    {
-        BtnSound();
-        Managers.UI.ShowPopUpUI<LastEndPopUp>();
-    }
-
-    //타이틀로
-    void ReturnTitle()
-    {
-        BtnSound();
-        Managers.Scene.LoadScene(Define.Scene.Title);
     }
 
     //언어변경
@@ -120,8 +98,6 @@ public class GameEndPopUp : UIPopUp
     public override void Transtlator(Define.Language lang)
     {
         TMP_Text titleText = GetText((int)Texts.Title);
-        TMP_Text returnText = GetText((int)Texts.ReturnText);
-        TMP_Text gameEndText = GetText((int)Texts.EndText);
         TMP_Text closeText = GetText((int)Texts.CloseTapText);
         TMP_Text bgmTxT = GetText((int)Texts.BgmTxT);
         TMP_Text seTxT = GetText((int)Texts.SETxT);
@@ -131,9 +107,7 @@ public class GameEndPopUp : UIPopUp
         {
             case Define.Language.Korean:
                 {
-                    titleText.text = "일시정지";
-                    returnText.text = "타이틀로";
-                    gameEndText.text = "게임종료";
+                    titleText.text = "설정";
                     closeText.text = "창 닫기";
                     bgmTxT.text = "배경음";
                     seTxT.text = "효과음";
@@ -143,9 +117,7 @@ public class GameEndPopUp : UIPopUp
 
             case Define.Language.English:
                 {
-                    titleText.text = "Paused";
-                    returnText.text = "Return title";
-                    gameEndText.text = "End game";
+                    titleText.text = "Settings";
                     closeText.text = "Close Tap";
                     bgmTxT.text = "Bgm";
                     seTxT.text = "SE";
