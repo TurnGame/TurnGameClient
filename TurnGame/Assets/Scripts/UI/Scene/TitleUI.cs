@@ -34,7 +34,7 @@ public class TitleUI : UIScene
         GetButton((int)Buttons.SetBtn).onClick.AddListener(OpenSetting);
         GetButton((int)Buttons.EndBtn).onClick.AddListener(EndGame);
 
-        Transtlator(Managers.UI.Language);
+        Transtlator(Managers.Data.Language);
     }
 
     async void GameStart()

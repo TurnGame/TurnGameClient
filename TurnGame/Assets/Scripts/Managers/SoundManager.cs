@@ -10,6 +10,8 @@ public class SoundManager
 
     Dictionary<string, AudioClip> _audioClips = new Dictionary<string, AudioClip>();
 
+    public AudioSource GetAudio(Define.Sound soundType) { return AudioSources[(int)soundType]; }
+
     public void Init()
     {
         GameObject root = GameObject.Find("@Sound");
@@ -28,7 +30,6 @@ public class SoundManager
                 go.transform.parent = root.transform;
                     
             }
-            LoadVolumeSetting();
             AudioSources[(int)Define.Sound.Bgm].loop = true;
         }
     }
@@ -106,17 +107,6 @@ public class SoundManager
     public void SetVolume(float volumeValue, Define.Sound volume)
     {
         AudioSources[(int)volume].volume = volumeValue;
-    }
-
-    public void SaveVolumeSetting()
-    {
-        PlayerPrefs.SetFloat(Define.Sound.Bgm.ToString(), AudioSources[(int)Define.Sound.Bgm].volume);
-        PlayerPrefs.SetFloat(Define.Sound.SE.ToString(), AudioSources[(int)Define.Sound.SE].volume);
-    }
-
-    public void LoadVolumeSetting()
-    {
-        AudioSources[(int)Define.Sound.Bgm].volume = PlayerPrefs.GetFloat(Define.Sound.Bgm.ToString(), 1.0f);
-        AudioSources[(int)Define.Sound.SE].volume = PlayerPrefs.GetFloat(Define.Sound.SE.ToString(), 1.0f);
+        Managers.Data.SaveVolumeSetting(volume);
     }
 }

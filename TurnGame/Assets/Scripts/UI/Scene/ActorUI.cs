@@ -25,7 +25,7 @@ public class ActorUI : UIScene
 
         Bind<Image>(typeof(Images));
 
-        Managers.UI.OnLanguageChanged -= Transtlator;
+        Managers.Data.OnLanguageChanged -= Transtlator;
         Managers.Input.KeyDownAction -= OnKeyDown;
         Managers.Input.KeyUpAction -= OnKeyUp;
         Managers.Input.KeyDownAction += OnKeyDown;

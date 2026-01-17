@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
@@ -21,6 +22,11 @@ public class TitlePopUp : UIPopUp
         LanguageBtn
     }
 
+    enum DropDowns
+    {
+        ScreenDropDown
+    }
+
     enum Sliders
     {
         BgmSlider,
@@ -32,14 +38,6 @@ public class TitlePopUp : UIPopUp
 
     #endregion
 
-    //유니티 함수 =====================================================================================
-    #region unity func
-    protected override void OnDisable()
-    {
-        base.OnDisable();
-        if (Managers.HasInstance) Managers.Sound.SaveVolumeSetting();
-    }
-    #endregion
 
     //초기화 함수 =====================================================================================
     #region init
@@ -49,9 +47,19 @@ public class TitlePopUp : UIPopUp
         Bind<TMP_Text>(typeof(Texts));
         Bind<Button>(typeof(Buttons));
         Bind<Slider>(typeof(Sliders));
+        Bind<TMP_Dropdown>(typeof(DropDowns));
 
         _seSlider = GetSlider((int)Sliders.SESlider);
         _bgmSlider = GetSlider((int)Sliders.BgmSlider);
+
+        //드랍다운 설정
+        TMP_Dropdown dropdown = Get<TMP_Dropdown>((int)DropDowns.ScreenDropDown);
+        dropdown.ClearOptions();
+        List<string> dropDownList = new List<string>();
+        dropDownList.Add("Full Screen");
+        dropDownList.Add("1920 * 1080p");
+        dropDownList.Add("1280 * 720p");
+        dropdown.AddOptions(dropDownList);
 
         //PlayerPrefs 읽기
         _seSlider.value = Managers.Sound.AudioSources[(int)Define.Sound.SE].volume;
@@ -71,17 +79,42 @@ public class TitlePopUp : UIPopUp
         GetButton((int)Buttons.CloseTapBtn).onClick.AddListener(CloseThisPopUp);
         GetButton((int)Buttons.LanguageBtn).onClick.AddListener(LanguagePopUp);
 
-        Transtlator(Managers.UI.Language);
+        Transtlator(Managers.Data.Language);
+
+        //드랍다운 이벤트 바인딩
+        dropdown.onValueChanged.RemoveAllListeners();
+        dropdown.onValueChanged.AddListener(OnScreenSelected);
+        dropdown.value = (int)Managers.Data.ScreenRatio;
+        dropdown.RefreshShownValue();
     }
     #endregion
 
     //버튼 이벤트 모음 =====================================================================================
     #region btn events
 
+    //스크린 비율
+    void OnScreenSelected(int index)
+    {
+        switch (index)
+        {
+            case 0:
+                Managers.UI.SetScreenMode(Define.ScreenRatio.FullScreen);
+                break;
+            case 1:
+                Managers.UI.SetScreenMode(Define.ScreenRatio.Fhd);
+                break;
+            case 2:
+                Managers.UI.SetScreenMode(Define.ScreenRatio.Hd);
+                break;
+        }
+        Managers.Data.SaveScreenRatio(index);
+    }
+
     //창닫기, 게임정지해제
     void CloseThisPopUp()
     {
         BtnSound();
+        PlayerPrefs.Save();
         ClosePopUpUI();
     }
 
@@ -91,6 +124,7 @@ public class TitlePopUp : UIPopUp
         BtnSound();
         Managers.UI.ShowPopUpUI<LanguagePopUp>();
     }
+
     #endregion
 
     //글자 대응 =====================================================================================

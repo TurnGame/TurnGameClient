@@ -34,7 +34,7 @@ public class LanguagePopUp : UIPopUp
         GetButton((int)Buttons.EnBtn).onClick.AddListener(() => LanguageSetting(Define.Language.English));
         GetButton((int)Buttons.PopUpCloseBtn).onClick.AddListener(CloseTap);
 
-        Transtlator(Managers.UI.Language);
+        Transtlator(Managers.Data.Language);
     }
     #endregion
 
@@ -43,6 +43,7 @@ public class LanguagePopUp : UIPopUp
     private void CloseTap()
     {
         BtnSound();
+        PlayerPrefs.Save();
         ClosePopUpUI();
     }
     #endregion
@@ -52,7 +53,7 @@ public class LanguagePopUp : UIPopUp
     void LanguageSetting(Define.Language language)
     {
         BtnSound();
-        Managers.UI.SetLanguage(language);
+        Managers.Data.SetLanguage(language);
     }
 
     #endregion

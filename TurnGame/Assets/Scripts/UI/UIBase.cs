@@ -12,8 +12,8 @@ public class UIBase : MonoBehaviour
 
     public virtual void Init()
     {
-        Managers.UI.OnLanguageChanged -= Transtlator;
-        Managers.UI.OnLanguageChanged += Transtlator;
+        Managers.Data.OnLanguageChanged -= Transtlator;
+        Managers.Data.OnLanguageChanged += Transtlator;
     }
 
     private void Start()
@@ -25,7 +25,7 @@ public class UIBase : MonoBehaviour
     {
         if (Managers.HasInstance)
         {
-            Managers.UI.OnLanguageChanged -= Transtlator;
+            Managers.Data.OnLanguageChanged -= Transtlator;
         }
     }
 
@@ -61,6 +61,8 @@ public class UIBase : MonoBehaviour
     }
 
     protected GameObject GetObject(int index) { return Get<GameObject>(index); }
+
+    protected TMP_Dropdown GetDrop(int index) { return Get<TMP_Dropdown>(index); }
 
     protected TMP_Text GetText(int index) { return Get<TMP_Text>(index); }
 

@@ -5,32 +5,13 @@ using UnityEngine;
 
 public class UIManager
 {
-    public Action<Define.Language>  OnLanguageChanged = null;
-
     int                             _order = 10;
     Stack<UIPopUp>                  _popUpStack = new Stack<UIPopUp>();
     UIScene                         _sceneUI = null;
 
-    public Define.Language Language { private set; get; } = Define.Language.Korean;
-
-    public void Init()
-    {
-        GetLanguage();
-    }
-
-    void GetLanguage()
-    {
-        string languageSetting = PlayerPrefs.GetString("Language", Define.Language.Korean.ToString());
-        Language = (Define.Language)Enum.Parse(typeof(Define.Language), languageSetting);
-    }
-
-    public void SetLanguage(Define.Language lang)
-    {
-        Language = lang;
-        OnLanguageChanged?.Invoke(lang);
-        PlayerPrefs.SetString("Language", lang.ToString());
-    }
-
+    //UI매니저 ===============================================================================================
+    #region ui management
+    //루트 생성
     public GameObject Root
     {
         get
@@ -42,6 +23,7 @@ public class UIManager
         }
     }
 
+    //sorting layer 조정
     public void SetCanvas(GameObject go, bool sort = true)
     {
         Canvas canvas = Util.GetOrAddComponent<Canvas>(go);
@@ -60,6 +42,7 @@ public class UIManager
 
     }
 
+    //월드스페이스 기준 UI 제작
     public T MakeWorldSpaceUI<T>(Transform parent = null, string name = null) where T : UIBase
     {
         if (string.IsNullOrEmpty(name))
@@ -76,6 +59,7 @@ public class UIManager
         return Util.GetOrAddComponent<T>(go);
     }
 
+    //서브 UI 제작
     public T MakeSubItem<T>(Transform parent = null, string name = null) where T : UIBase
     {
         if (string.IsNullOrEmpty(name))
@@ -88,6 +72,7 @@ public class UIManager
         return Util.GetOrAddComponent<T>(go);
     }
 
+    //씬 UI 제작
     public T ShowSceneUI<T>(string name = null) where T : UIScene
     {
         if (string.IsNullOrEmpty(name))
@@ -102,6 +87,7 @@ public class UIManager
         return sceneUI;
     }
 
+    //팝업 UI 제작
     public T ShowPopUpUI<T>(string name = null) where T : UIPopUp
     {
         if (string.IsNullOrEmpty(name))
@@ -116,6 +102,7 @@ public class UIManager
         return popUp;
     }
 
+    //팝업 UI 제거
     public void ClosePopUpUI(UIPopUp popUp)
     {
         if (_popUpStack.Count == 0)
@@ -129,6 +116,7 @@ public class UIManager
 
         ClosePopUpUI();
     }
+
     public void ClosePopUpUI()
     {
         if (_popUpStack.Count == 0)
@@ -146,11 +134,33 @@ public class UIManager
         while (_popUpStack.Count > 0)
             ClosePopUpUI();
     }
+    #endregion
+
+    //전체화면(기본화질 1920*1080) =====================================================================================
+    #region screen
+    public void SetScreenMode(Define.ScreenRatio ratio)
+    {
+        switch (ratio)
+        {
+            case Define.ScreenRatio.FullScreen:
+                Screen.SetResolution(Screen.currentResolution.width, Screen.currentResolution.height, FullScreenMode.FullScreenWindow);
+                break;
+            case Define.ScreenRatio.Hd:
+                Screen.SetResolution((int)Define.ScreenRatio.HdWidth, (int)Define.ScreenRatio.HdHeight, FullScreenMode.Windowed);
+                break;
+            case Define.ScreenRatio.Fhd:
+                Screen.SetResolution((int)Define.ScreenRatio.FHDWidth, (int)Define.ScreenRatio.HdHeight, FullScreenMode.Windowed);
+                break;
+            default:
+                break;
+        }
+    }
+    #endregion
+
 
     public void Clear()
     {
         ClosePopUpUIAll();
-        OnLanguageChanged = null;
         _sceneUI = null;
     }
 }

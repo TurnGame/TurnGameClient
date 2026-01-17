@@ -5,6 +5,7 @@ using UnityEngine;
 public class UIPopUp : UIBase
 {
     enum Panel { BG }
+    public bool hasPrefs = false;
 
     public override void Init()
     {
@@ -16,11 +17,13 @@ public class UIPopUp : UIBase
         BindEvent(bg, (data) => BgClick(), Define.UIEvent.Click);
     }
 
-    void BgClick()
+    public virtual void BgClick()
     {
         BtnSound();
         ClosePopUpUI();
         Managers.Game.ChangeGameState(Define.GameState.Play);
+        if(hasPrefs)
+            PlayerPrefs.Save();
     }
 
     public virtual void ClosePopUpUI()

@@ -33,7 +33,7 @@ public class LastEndPopUp : UIPopUp
         GetButton((int)Buttons.NoBtn).onClick.AddListener(CloseTap);
         GetButton((int)Buttons.YesBtn).onClick.AddListener(QuitGame);
 
-        Transtlator(Managers.UI.Language);
+        Transtlator(Managers.Data.Language);
     }
     #endregion
 
@@ -51,6 +51,7 @@ public class LastEndPopUp : UIPopUp
     void QuitGame()
     {
         BtnSound();
+        PlayerPrefs.Save();
         Application.Quit();
     }
     #endregion
