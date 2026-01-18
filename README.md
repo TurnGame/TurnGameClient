@@ -1,5 +1,6 @@
 <div align="center">
   <h3 align="center">📌 Night Workshop 📌</h3>
+  <img src = "https://github.com/user-attachments/assets/caf06b4e-ad48-4a27-b230-bd2789ad705c" width="400" height="400" />
 </div>
 
 ----
