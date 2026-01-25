@@ -11,6 +11,8 @@ public interface iLoader<Key, Value>
 }
 public class DataManager
 {
+    //  JSON에서 읽어온 Stat 데이터를 딕셔너리 형태로 보관하는 변수
+    //  외부에서는 이 변수(Managers.Data.StatDict)를 통해 데이터에 접근
     public Dictionary<int, Data.Stat> StatDict { get; private set; } = new Dictionary<int, Data.Stat>();
 
     public Define.ScreenRatio ScreenRatio { get; private set; } = Define.ScreenRatio.FullScreen;
@@ -20,6 +22,10 @@ public class DataManager
 
     public void Init()
     {
+        // 1. "StatData"라는 이름의 JSON 파일을 읽어옴
+        // 2. 읽어온 내용을 StatData 클래스로 변환
+        // 3. MakeDict()를 실행해 딕셔너리로 만듦
+        // 4. StatDict 변수에 저장
         StatDict = LoadJson<Data.StatData, int, Data.Stat>("StatData").MakeDict();
         
     }

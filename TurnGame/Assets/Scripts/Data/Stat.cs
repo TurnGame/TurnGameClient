@@ -31,7 +31,7 @@ public class Stat : MonoBehaviour
     virtual protected void Init()
     {
         UnitNum = (int)_unitnum;
-        Data.Stat stat = Managers.Data.StatDict[UnitNum];
+        Data.Stat stat = Managers.Data.StatDict[UnitNum]; // UnitNum을 넘겨서 스탯을 딕셔너리 형태로 전부 가져옴
         Hp = stat.hp;
         CurrentHp = Hp;
         Mana = stat.mana;

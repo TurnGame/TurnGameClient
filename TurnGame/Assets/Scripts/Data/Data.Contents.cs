@@ -1,8 +1,11 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using Data;
 using UnityEngine;
-
+// JSON에서 불러온 데이터(원본)를 저장하는 용도
+// StatData를 통해 리스트 형태의 데이터를 딕셔너리로 변환하여 쉽게 찾을 수 있도록 함
+// 플레이어 Enemy 등 스탯 수치는 json에서 관리??
 namespace Data
 {
     #region Stat
@@ -32,7 +35,7 @@ namespace Data
         {
             Dictionary<int, Stat> dict = new Dictionary<int, Stat>();
             foreach (Stat stat in stats)
-                dict.Add(stat.unitNum, stat);
+                dict.Add(stat.unitNum, stat); // // Key: 유닛번호, Value: 스탯객체 전체
 
             return dict;
         }
