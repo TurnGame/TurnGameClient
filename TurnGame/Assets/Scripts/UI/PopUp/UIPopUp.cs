@@ -13,8 +13,10 @@ public class UIPopUp : UIBase
         Managers.UI.SetCanvas(gameObject, true);
 
         Bind<GameObject>(typeof(Panel));
+
         GameObject bg = GetObject((int)Panel.BG);
-        BindEvent(bg, (data) => BgClick(), Define.UIEvent.Click);
+        if(bg != null )
+            BindEvent(bg, (data) => BgClick(), Define.UIEvent.Click);
     }
 
     public virtual void BgClick()
