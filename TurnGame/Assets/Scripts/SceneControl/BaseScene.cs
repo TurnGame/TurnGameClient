@@ -17,6 +17,8 @@ public abstract class BaseScene : MonoBehaviour
         Object obj = GameObject.FindFirstObjectByType(typeof(EventSystem));
         if (obj == null)
             Managers.Resource.Instantiate("UI/EventSystem").name = "@EventSystem";
+
+        Managers.UI.ShowPopUpUI<FadeOutPopUp>();
     }
 
     public abstract void Clear();

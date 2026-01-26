@@ -6,6 +6,7 @@ public class TitleScene : BaseScene
     {
         base.Init();
         SceneType = Define.Scene.Title;
+        
         Managers.UI.ShowSceneUI<TitleUI>();
     }
 
