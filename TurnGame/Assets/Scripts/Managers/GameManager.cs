@@ -19,6 +19,8 @@ public class GameManager
     //외부 접근 함수 =====================================================================================
     #region get & set
     public GameObject GetPlayer() { return _player; }
+    public HashSet<GameObject> GetMobs() { return _monsters; }
+    public HashSet<GameObject> GetUnits() { return _units; }
     public GameObject TestGetPlayer() { return GameObject.FindGameObjectWithTag("Player"); }
     #endregion
 

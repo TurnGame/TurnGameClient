@@ -78,6 +78,9 @@ public class PoolManager
 
     public void CreatePool(GameObject original, int count = 5)
     {
+        if (_pool.ContainsKey(original.name))
+            return;
+
         Pool pool = new Pool();
         pool.Init(original, count);
         pool.Root.parent = _root;

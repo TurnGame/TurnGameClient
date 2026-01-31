@@ -4,6 +4,21 @@ using UnityEngine;
 
 public class ResourceManager
 {
+    public void CreatePool(string path, int count = 5)
+    {
+        GameObject origin = Load<GameObject>($"Prefabs/{path}");
+        if (origin == null)
+        {
+            Debug.Log($"Failed to load prefab : {path}");
+            return;
+        }
+
+        if (origin.GetComponent<Poolable>() != null)
+        {
+            Managers.Pool.CreatePool(origin, count);
+        }
+    }
+
     public T Load<T>(string path) where T : Object
     {
         if(typeof(T) == typeof(GameObject))

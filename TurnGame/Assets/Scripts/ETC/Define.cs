@@ -46,8 +46,14 @@ public class Define
     public enum UnitNum
     {
         Player = 0,
-        Unit = 1,
-        Enemy = 10
+
+        Wisp = 1,
+        Ghost = 2,
+
+        Hog = 10,
+        Goat = 11,
+        Rhino = 12,
+        Titan = 13
     }
 
     public enum PlayerState
