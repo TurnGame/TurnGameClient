@@ -27,7 +27,7 @@ public class PlayerStateMaschine : MonoBehaviour
     public GameObject EnemyToAttack; // Enemy근처에서 공격할 수 있도록 하는 변수
     private bool actionStarted = false;
     private Vector3 startPosition;
-    private float animSpeed = 10f;
+    private float animSpeed = 50f;
 
     void Start()
     {
@@ -56,12 +56,18 @@ public class PlayerStateMaschine : MonoBehaviour
                 // idle
                 break;
             case (TurnState.ACTION):
+                Vector3 localOffset = new Vector3(-2.0f, 1.0f, -1f);
+                Vector3 targetPosition = this.transform.TransformPoint(localOffset);
+                Quaternion addRotation = Quaternion.Euler(20, 75, 0);
+                Quaternion targetRotation = this.transform.rotation * addRotation;
+                Camera.main.transform.SetPositionAndRotation(targetPosition, targetRotation);
                 StartCoroutine(TimeForAction());
                 break;
             case (TurnState.DEAD):
 
                 break;
         }
+       
     }
 
     public void Setup(Image myBar)
@@ -106,6 +112,9 @@ public class PlayerStateMaschine : MonoBehaviour
         actionStarted = true;
         // 플레이어 근처에서 공격하도록 위치 설정
         Vector3 enemyPosition = new Vector3(EnemyToAttack.transform.position.x - 1.5f, EnemyToAttack.transform.position.y, EnemyToAttack.transform.position.z); // 플레이어 위치보다 살짝 앞으로 설정
+
+
+
 
         while (MoveTowardsEnemy(enemyPosition))
         {

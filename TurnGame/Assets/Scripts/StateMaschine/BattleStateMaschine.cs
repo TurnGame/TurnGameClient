@@ -21,7 +21,6 @@ public class BattleStateMaschine : MonoBehaviour
     }
 
     public HeroGUI HeroInput;
-
     public List<GameObject> HerosToManage = new List<GameObject>();
     private HandleTurn HeroChoice;
 
@@ -40,10 +39,10 @@ public class BattleStateMaschine : MonoBehaviour
         AttackPanel.SetActive(false);
         
         // ★ 중요: InputManager에 마우스 이벤트 구독 신청
-        if (Managers.Input != null)
+        if (Managers.Input != null) // Managers.Input이 만들어져 있는지 확인 (없으면 만들어서라도 가져올 수 있도록 코딩되어있음)
         {
-            Managers.Input.MouseAction -= OnMouseEvent;
-            Managers.Input.MouseAction += OnMouseEvent;
+            Managers.Input.MouseAction -= OnMouseEvent; // 구독 취소(삭제) -> 초기화 하는거임
+            Managers.Input.MouseAction += OnMouseEvent; // 구독(추가)
         }
     }
 
@@ -158,11 +157,9 @@ public class BattleStateMaschine : MonoBehaviour
         HeroInput = HeroGUI.DONE; 
     }
 
-    void HeroInputDone() 
+    void HeroInputDone()  
     {
         PerformList.Add(HeroChoice); 
-        
-        // EnemySelectPanel.SetActive(false); (삭제)
         
         HerosToManage[0].transform.Find("Selector").gameObject.SetActive(false); 
         HerosToManage.RemoveAt(0); 

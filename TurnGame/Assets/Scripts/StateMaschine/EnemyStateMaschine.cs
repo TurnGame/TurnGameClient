@@ -47,10 +47,10 @@ public class EnemyStateMaschine : MonoBehaviour
             case (TurnState.CHOOSEACTION):
                 ChooseAction();
                 currentstate = TurnState.WAITING;
-                break; ;
+                break;
             case (TurnState.WAITING):
                 // idle state
-                break; ;
+                break;
             case (TurnState.ACTION): // 나중에 BSM에 의해 설정됨
                 StartCoroutine(TimeForAction());
                 break;
@@ -89,7 +89,6 @@ public class EnemyStateMaschine : MonoBehaviour
         actionStarted = true;
         // 플레이어 근처에서 공격하도록 위치 설정
         Vector3 heroPosition = new Vector3(HeroToAttack.transform.position.x + 1.5f, HeroToAttack.transform.position.y, HeroToAttack.transform.position.z); // 플레이어 위치보다 살짝 앞으로 설정
-
         while (MoveTowardsEnemy(heroPosition))
         {
             yield return null; // 적을 향해 이동하는 동안 아무것도 하지 않고 기다림.

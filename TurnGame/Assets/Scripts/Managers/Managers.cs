@@ -59,7 +59,7 @@ public class Managers : MonoBehaviour
                 //go.name = "@Managers";
             }
 
-            DontDestroyOnLoad(go);
+            DontDestroyOnLoad(go); // 씬이 바뀌어도 절대 삭제되지 않음
             _Instance = go.GetComponent<Managers>();
 
             _Instance._data.Init();
